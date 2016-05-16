@@ -1,0 +1,109 @@
+//
+   Created by lenovo on 2016/5/2.
+.navbar.navbar-inverse.navbar-fixed-top
+    .container
+        .navbar-header
+            a.navbar-brand(href="#")
+                img.img-circle.img-responsive(width="20",height="20",src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC")
+        ul.nav.navbar-nav.navbar-left.nav-pills
+            if active == "index"
+                li.active
+                    a(href="/")
+                        i.icon-home
+                        | &nbsp;&nbsp;HOME
+            else
+                li
+                    a(href="/")
+                        i.icon-home
+                        | &nbsp;&nbsp;HOME
+            if active == "blog"
+                li.active
+                    a(href="/blog")
+                        i.icon-blogger2
+                        | &nbsp;&nbsp;BLOG
+            else
+                li
+                    a(href="/blog")
+                        i.icon-blogger2
+                        | &nbsp;&nbsp;BLOG
+            if active == "note"
+                li.active
+                    a(href="#")
+                        i.icon-pencil
+                        | &nbsp;&nbsp;留言
+            else
+                li
+                    a(href="#")
+                        i.icon-pencil
+                        | &nbsp;&nbsp;留言
+            if active == "os"
+                li.active
+                    a(href="#")
+                        i.icon-embed2
+                        | &nbsp;&nbsp;开源
+            else
+                li
+                    a(href="#")
+                        i.icon-embed2
+                        | &nbsp;&nbsp;开源
+            if active == "about"
+                li.active
+                    a(href="#")
+                        i.icon-user-tie
+                        | &nbsp;&nbsp;关于
+            else
+                li
+                    a(href="#")
+                        i.icon-user-tie
+                        | &nbsp;&nbsp;关于
+
+        a.uerImg.navbar-right(style="margin-left:20px")
+            if user
+                img.img-circle(src="#{user.poster}",width="30",height="30",style="margin-top:10px")
+            else
+                img.img-circle(src="/images/brand.jpg",width="30",height="30",style="margin-top:10px")
+        if user
+            p.navbar-text.navbar-right
+                span 欢迎您，#{user.name}
+                span &nbsp;&nbsp;
+            a.btn.btn-default.navbar-btn.navbar-right(href="/logout") 登出
+        else
+            button.btn.btn-default.navbar-btn.navbar-right(style="margin-left:20px" data-toggle="modal" data-target="#signupModal") sign up
+            button.btn.btn-success.navbar-btn.navbar-right(data-toggle="modal" data-target="#signinModal") Sign in
+#signupModal.modal.fade
+    .modal-dialog
+        .modal-content
+            form(method="POST", action="/signup", enctype="multipart/form-data")
+                .modal-header 注册
+                .modal-body
+                    .form-group
+                        label(for="signupName") 用户名
+                        input#signupName.form-control(name="name", type="text")
+                    .form-group
+                        label(for="signupPassword") 密码
+                        input#signupPassword.form-control(name="password", type="text")
+                    .form-group
+                        label.col-sm-2.control-label(for="upload") 头像上传
+                        input#upload(type="file", name="uploadPoster")
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+                    button.btn.btn-success(type="submit") 提交
+#signinModal.modal.fade
+    .modal-dialog
+        .modal-content
+            form(method="POST", action="/signin")
+                .modal-header 登录
+                .modal-body
+                    .form-group
+                        label(for="signinName") 用户名
+                        input#signinName.form-control(name="name", type="text")
+                    .form-group
+                        label(for="signinPassword") 密码
+                        input#signinPassword.form-control(name="password", type="text")
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+                    button.btn.btn-success(type="submit") 提交
+
+
+
+

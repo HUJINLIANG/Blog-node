@@ -1,0 +1,21 @@
+{
+  "name": "Blog-node",
+  "description": "",
+  "main": "bin/www.js",
+  "authors": [
+    "hjl"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

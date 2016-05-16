@@ -1,0 +1,65 @@
+.admin-block {
+    background: #eee;
+    padding: 30px 0 0 15px;
+    top: -31px;
+    /*bottom: 0;*/
+    position: relative;
+    z-index: 1;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.admin-top {
+    border: 1px solid #e7eaec;
+    height: 60px;
+    font-size: 16px;
+    padding-top: 20px;
+    padding-left: 18px;
+    background: #ffffff;
+}
+.admin-split {
+    height: 20px;
+    border-left: 1px solid #e7eaec;
+    border-right: 1px solid #e7eaec;
+    background: #ffffff;
+}
+.admin-list {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 0px;
+    /*top: 110px;*/
+    background: #ffffff;
+    border-left: 1px solid #e7eaec;
+    border-right: 1px solid #e7eaec;
+}
+.nav-pills > li > a {
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+
+.admin-list .nav li a {
+    padding: 14px 20px 14px 25px;
+    border: 1px solid #e7eaec;
+    font-size: 15px;
+}
+.admin-list .nav li a img {
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+    margin-top: -3px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    color: #ff1db7;
+    background: transparent;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #fff5ee;
+    border-color: #f8d4bc;
+    color: #ff1db7;
+}
+
+.nav-pills .badge {
+    background: #555;
+    color: #ffffff;
+    float: right;
+}

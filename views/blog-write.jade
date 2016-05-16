@@ -1,0 +1,17 @@
+//
+   Created by lenovo on 2016/5/6.
+extends Write
+
+block blog-content
+    .col-md-8.blog-content
+        form#blogForm.form-horizontal(method="POST", action="")
+            .form-group
+                label.col-sm-2.control-label 文章标题
+                .col-md-5
+                    input#blogTitle.form-control(type='text',name='blogTitle')
+            .form-group
+                .col-md-9.col-md-offset-2
+                    .text-input
+                        textarea.textarea(name="comment[content]", row="100")
+
+                button.btn.btn-primary(type='submit') 提交

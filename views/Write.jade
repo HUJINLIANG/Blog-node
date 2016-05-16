@@ -1,0 +1,29 @@
+//
+   Created by lenovo on 2016/5/5.
+extends layout
+
+block content
+    .jumbotron(style='margin-bottom:0')
+        .container
+            h1 Hello，#{user.name}
+            p.
+                这是免费的博客系统，大家可以随心所欲发表自己的想法和见解！
+            a.btn.btn-primary.btn-lg(href='#') Let's Start!
+    .container-fluid(style='height:2000px;padding:0')
+        .row
+            .col-md-2.admin-block
+                .admin-top 博客管理
+                .admin-split
+                .admin-list
+                    ul.nav.nav-pills.nav-stacked
+                        li.active
+                            a(href="/blogWrite")
+                                img(src="/images/blog.svg")
+                                | &nbsp;&nbsp;我的博客
+                        li
+                            a(href="/blogWrite")
+                                img(src="/images/new.svg")
+                                | &nbsp;&nbsp;新建博客
+            block blog-content
+
+

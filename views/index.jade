@@ -1,0 +1,127 @@
+extends layout
+//(style="background:red;")
+block content
+  .container-fluid
+    .row
+      .col-md-2.category-block
+        .category-top 文章分类
+        .category-split
+        .category-list
+          ul.nav.nav-pills.nav-stacked
+            li.active
+              a(href="#")
+                img(src="/images/all.svg")
+                | &nbsp;&nbsp;全部
+            li
+              a(href="#")
+                img(src="/images/html.svg")
+                | &nbsp;&nbsp;HTML
+            li
+              a(href="#")
+                img(src="/images/social-css3.svg")
+                | &nbsp;&nbsp;CSS
+            li
+              a(href="#")
+                img(src="/images/social-javascript.svg")
+                | &nbsp;&nbsp;JAVASCRIPT
+            li
+              a(href="#")
+                img(src="/images/jquery.svg")
+                | &nbsp;&nbsp;JQUERY
+            li
+              a(href="#")
+                img(src="/images/social-nodejs.svg")
+                | &nbsp;&nbsp;NODEJS
+            li
+              a(href="#")
+                img(src="/images/social-angular.svg")
+                | &nbsp;&nbsp;ANGULARJS
+            li
+              a(href="#")
+                img(src="/images/ex.svg")
+                | &nbsp;&nbsp;其他
+      .col-md-8.col-md-offset-2.blog-list
+        .row.list-container
+          .col-md-12.list-background
+            .row.top-bar
+              .col-md-7.list-top-left
+                a.current(title="按日期排序" href="#") 日期
+                a(title="按类型排序" href="#") 类型
+              .col-md-5.list-top-right
+                .form-search
+                  .input-group
+                    input#keyword.form-control.search-query(type="text()",placeholder="请输入关键字")
+                    div.input-group-btn
+                      button.btn.btn-info
+                        i.icon-hammer
+                        span &nbsp;&nbsp;搜索
+            ul.list-unstyled
+              li.page1
+                div.blog-item
+                  h4.title
+                    a(href="#")
+                      | AngularJS学习笔记
+                  sapn.category
+                    a(href="#")
+                      img(src="/images/category.svg")
+                      | &nbsp;&nbsp;AngularJS
+                  span.time
+                    img(src="/images/clock.svg")
+                    | &nbsp;&nbsp;2016-03
+                  div.clearfix
+                  p 模型和视图之间是同步的，数据模型控制器
+                .hr-line-dashed
+                div.blog-item
+                  h4.title
+                    a(href="#")
+                      | AngularJS学习笔记
+                  sapn.category
+                    a(href="#")
+                      img(src="/images/category.svg")
+                      | &nbsp;&nbsp;AngularJS
+                  span.time
+                    img(src="/images/clock.svg")
+                    | &nbsp;&nbsp;2016-03
+                  div.clearfix
+                  p 模型和视图之间是同步的，数据模型控制器
+                .hr-line-dashed
+                div.blog-item
+                  h4.title
+                    a(href="#")
+                      | AngularJS学习笔记
+                  sapn.category
+                    a(href="#")
+                      img(src="/images/category.svg")
+                      | &nbsp;&nbsp;AngularJS
+                  span.time
+                    img(src="/images/clock.svg")
+                    | &nbsp;&nbsp;2016-03
+                  div.clearfix
+                  p 模型和视图之间是同步的，数据模型控制器
+                .hr-line-dashed
+                div.blog-item
+                  h4.title
+                    a(href="#")
+                      | AngularJS学习笔记
+                  sapn.category
+                    a(href="#")
+                      img(src="/images/category.svg")
+                      | &nbsp;&nbsp;AngularJS
+                  span.time
+                    img(src="/images/clock.svg")
+                    | &nbsp;&nbsp;2016-03
+                  div.clearfix
+                  p 模型和视图之间是同步的，数据模型控制器
+                .hr-line-dashed
+            nav
+              ul.pager
+                li.previous
+                  a(href="#")
+                    span 上一页
+                li.next
+                  a(href="#")
+                    span 下一页
+
+
+
+
