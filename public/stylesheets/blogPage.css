@@ -1,9 +1,9 @@
 .admin-block {
     background: #eee;
-    padding: 30px 0 0 15px;
+    padding: 100px 15px 0 15px;
     top: -31px;
-    /*bottom: 0;*/
-    position: relative;
+    bottom: 0;
+    position: fixed;
     z-index: 1;
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }

@@ -16,8 +16,10 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/blog', function(req, res, next) {
-    res.render('write', { active: 'blog' });
+    res.render('blog-write', { active: 'blog' ,blogActive:'write'});
 });
+
+
 
 router.get('/blogWrite',function(req,res,next){
     res.render('blog-write')

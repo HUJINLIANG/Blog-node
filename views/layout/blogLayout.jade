@@ -1,0 +1,33 @@
+//
+   Created by lenovo on 2016/5/5.
+extends mainLayout
+
+block content
+    .container
+        if !user
+            .jumbotron(style='margin-bottom:0')
+                .container
+                    h1 Hello,新的朋友
+                    p.
+                        这是免费的博客系统，大家可以随心所欲发表自己的想法和见解！
+                    a.btn.btn-primary.btn-lg(data-toggle="modal" data-target="#signinModal") 登录
+                    | &nbsp;&nbsp;&nbsp;
+                    a.btn.btn-default.btn-lg(data-toggle="modal" data-target="#signupModal") 注册
+        if user
+            .row
+                .col-md-2.admin-block
+                    .admin-top 我的博客
+                    .admin-split
+                    .admin-list
+                        ul.nav.nav-pills.nav-stacked
+                            li.active
+                                a(href="/blog")
+                                    img(src="/images/blog.svg")
+                                    | &nbsp;&nbsp;我的博客
+                            li
+                                a(href="/blogWrite")
+                                    img(src="/images/new.svg")
+                                    | &nbsp;&nbsp;新建博客
+                block blog-content
+
+

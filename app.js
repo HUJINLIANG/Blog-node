@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(session);
+var Category = require('./models/category');
 // var dbUrl = "mongodb://hjml69351:hjml69293@ds041394.mlab.com:41394/user";
 var dbUrl = "mongodb://localhost/ap1";
 
@@ -16,6 +17,7 @@ mongoose.connect(dbUrl)
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -48,6 +50,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/admin',admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -79,6 +82,36 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+var categorys = ['HTML','CSS','JAVASCRIPT','JQUERY','NODEJS','ANGULARJS','其他'];
+
+function addCategorys(){
+  addCate(categorys[0]);
+  addCate(categorys[1]);
+  addCate(categorys[2]);
+  addCate(categorys[3]);
+  addCate(categorys[4]);
+  addCate(categorys[5]);
+  addCate(categorys[6]);
+}
+
+function addCate(name){
+  Category.findOne({name: name}, function (err, category) {
+        if (category) {
+
+        } else {
+          category = new Category({
+            name: name
+          });
+          category.save(function (err, category) {
+            console.log(category)
+          })
+        }
+      })
+}
+
+addCategorys();
+
 
 
 module.exports = app;

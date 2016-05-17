@@ -1,17 +1,42 @@
 //
    Created by lenovo on 2016/5/6.
-extends Write
+extends layout/blogLayout
 
 block blog-content
-    .col-md-8.blog-content
-        form#blogForm.form-horizontal(method="POST", action="")
-            .form-group
-                label.col-sm-2.control-label 文章标题
-                .col-md-5
-                    input#blogTitle.form-control(type='text',name='blogTitle')
-            .form-group
-                .col-md-9.col-md-offset-2
-                    .text-input
-                        textarea.textarea(name="comment[content]", row="100")
+    .col-md-8.col-md-offset-2.blog-outer
+        .blog-content
+            form#blogForm.form-horizontal(method="POST", action="/admin/addpage")
+                .form-group
+                    h4 &nbsp;&nbsp;&nbsp;类型
+                    .col-md-12
+                        label.radio-inline
+                            input(type='radio',name='category',value='HTML')
+                            | HTML
+                        label.radio-inline
+                            input(type='radio',name='category',value='CSS')
+                            | CSS
+                        label.radio-inline
+                            input(type='radio',name='category',value='JAVASCRIPT')
+                            | JAVASCRIPT
+                        label.radio-inline
+                            input(type='radio',name='category',value='JQUERY')
+                            | JQUERY
+                        label.radio-inline
+                            input(type='radio',name='category',value='NODEJS')
+                            | NODEJS
+                        label.radio-inline
+                            input(type='radio',name='category',value='ANGULARJS')
+                            | ANGULARJS
+                        label.radio-inline
+                            input(type='radio',name='category',value='其他')
+                            | 其他
+                .form-group
+                    h4 &nbsp;&nbsp;&nbsp;文章标题
+                    .col-md-12
+                        input#blogTitle.form-control(type='text',name='title')
+                .form-group
+                    h4 &nbsp;&nbsp;&nbsp;内容
+                    .col-md-12
+                        textarea.textarea.form-control(name="content", rows="20")
 
-                button.btn.btn-primary(type='submit') 提交
+                button.btn.btn-primary.btn-block(type='submit') 提交
