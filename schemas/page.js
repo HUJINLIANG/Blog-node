@@ -2,15 +2,29 @@
  * Created by lenovo on 2016/5/16.
  */
 var mongoose = require('mongoose');
-var Schema = mongoosek.Schema;
+var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var PageSchema = new mongoose.Schema({
     title:String,
     content:String,
+    author:{
+        type:ObjectId,
+        ref:'User'
+    },
     category:{
         type:ObjectId,
         ref:'Category'
+    },
+    pv: {
+        type: Number,
+        default: 0
+    },
+    meta:{
+        create:{
+            type:Date,
+            default:Date.now()
+        }
     }
 
 });

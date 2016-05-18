@@ -6,30 +6,14 @@ block blog-content
     .col-md-8.col-md-offset-2.blog-outer
         .blog-content
             form#blogForm.form-horizontal(method="POST", action="/admin/addpage")
+                input(type='hidden',name='author',value='#{user._id}')
                 .form-group
                     h4 &nbsp;&nbsp;&nbsp;类型
                     .col-md-12
-                        label.radio-inline
-                            input(type='radio',name='category',value='HTML')
-                            | HTML
-                        label.radio-inline
-                            input(type='radio',name='category',value='CSS')
-                            | CSS
-                        label.radio-inline
-                            input(type='radio',name='category',value='JAVASCRIPT')
-                            | JAVASCRIPT
-                        label.radio-inline
-                            input(type='radio',name='category',value='JQUERY')
-                            | JQUERY
-                        label.radio-inline
-                            input(type='radio',name='category',value='NODEJS')
-                            | NODEJS
-                        label.radio-inline
-                            input(type='radio',name='category',value='ANGULARJS')
-                            | ANGULARJS
-                        label.radio-inline
-                            input(type='radio',name='category',value='其他')
-                            | 其他
+                        each cate in categories
+                            label.radio-inline
+                                input(type='radio',name='category',value=cate._id)
+                                | #{cate.name}
                 .form-group
                     h4 &nbsp;&nbsp;&nbsp;文章标题
                     .col-md-12

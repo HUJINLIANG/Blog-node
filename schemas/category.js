@@ -10,7 +10,7 @@ var CategorySchema = new Schema({
         type:String,
         unique:true
     },
-    pages: [{type: ObjectId, ref: 'Page'}],
+    pages: [{type: ObjectId, ref: 'Page'}]
 });
 
 

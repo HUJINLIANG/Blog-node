@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
+var moment = require('moment');
 var mongoStore = require('connect-mongo')(session);
 var Category = require('./models/category');
 // var dbUrl = "mongodb://hjml69351:hjml69293@ds041394.mlab.com:41394/user";
@@ -48,9 +49,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/admin',admin);
+routes(app);
+// app.use('/user', user);
+// app.use('/admin',admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -112,6 +113,6 @@ function addCate(name){
 
 addCategorys();
 
-
+app.locals.moment = moment;
 
 module.exports = app;

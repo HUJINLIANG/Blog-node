@@ -20,14 +20,26 @@ block content
                     .admin-split
                     .admin-list
                         ul.nav.nav-pills.nav-stacked
-                            li.active
-                                a(href="/blog")
-                                    img(src="/images/blog.svg")
-                                    | &nbsp;&nbsp;我的博客
-                            li
-                                a(href="/blogWrite")
-                                    img(src="/images/new.svg")
-                                    | &nbsp;&nbsp;新建博客
+                            if blogActive == 'blogs'
+                                li.active
+                                    a(href="/blog")
+                                        img(src="/images/blog.svg")
+                                        | &nbsp;&nbsp;我的博客
+                            else
+                                li
+                                    a(href="/blog")
+                                        img(src="/images/blog.svg")
+                                        | &nbsp;&nbsp;我的博客
+                            if blogActive == 'write'
+                                li.active
+                                    a(href="/blogWrite")
+                                        img(src="/images/new.svg")
+                                        | &nbsp;&nbsp;新建博客
+                            else
+                                li
+                                    a(href="/blogWrite")
+                                        img(src="/images/new.svg")
+                                        | &nbsp;&nbsp;新建博客
                 block blog-content
 
 

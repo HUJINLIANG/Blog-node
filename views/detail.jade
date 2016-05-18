@@ -1,0 +1,60 @@
+//
+   Created by lenovo on 2016/5/18.
+extends layout/mainLayout
+
+block content
+    .container
+        .row
+            .col-md-9
+                .page-container(style='border:1px solid #c5c5c5;border-radius:4px;margin-top:30px;padding:10px;min-height:1000px;background:#ffffff')
+                    h3 #{page.title}
+                    span 发布时间：#{moment(page.meta.createAt).format('MM/DD/YYYY')}&nbsp;&nbsp;&nbsp;作者：#{page.author.name}&nbsp;&nbsp;&nbsp;#{page.pv}次浏览&nbsp;&nbsp;&nbsp;类型：#{page.category.name}
+                    hr
+                    p #{page.content}
+                .panel.panel-default(style='margin-top:20px')
+                    .panel-heading
+                        h3 评论区
+                    .panel-body
+                        ul.media-list
+                            each item in comments
+                                li.media
+                                    .pull-left
+                                        a.comment(href="#comments", data-cid="#{item._id}", data-tid="#{item.from._id}")
+                                            img.media-object(src="#{item.from.poster}",style="width: 64px; height: 64px;")
+                                    .media-body
+                                        h4.media-heading #{item.from.name}
+                                        p #{item.content}
+                                        if item.reply && item.reply.length > 0
+                                            each reply in item.reply
+                                                .media
+                                                    .pull-left
+                                                        a.comment(href="#comments", data-cid="#{item._id}", data-tid="#{reply.from._id}")
+                                                            img.media-object(src="#{reply.from.poster}", style="width: 64px; height: 64px;")
+                                                    .media-body
+                                                        h4.media-heading
+                                                            | #{reply.from.name}
+                                                            span.text-info &nbsp;回复&nbsp;
+                                                            | #{reply.to.name}:
+                                                        p #{reply.content}
+                                    hr
+                        #comments
+                            form#commentForm(method="POST", action="/user/comment")
+                                input(type="hidden", name="page", value="#{page._id}")
+                                if user
+                                    input(type="hidden", name="from", value="#{user._id}")
+                                .form-group
+                                    textarea.form-control(name="content", row="3")
+                                if user
+                                    button.btn.btn-primary(type='submit') 提交
+                                else
+                                    a.navbar-link(href="#", data-toggle="modal", data-target="#signinModal") 登录后评论
+
+            .col-md-3
+                .author-container(style='border:1px solid #c5c5c5;border-radius:4px;margin-top:30px;padding:10px;background:#ffffff')
+                    .media
+                        .media-left
+                            a(href='#')
+                                img.media-object(src='#{page.author.poster}',width='70',height='70')
+                        .media-body
+                            h4.media-heading= page.author.name
+    script(src="/js/detail.js")
