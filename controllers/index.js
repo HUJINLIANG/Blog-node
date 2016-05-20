@@ -80,6 +80,7 @@ exports.show = function(req,res) {
                 console.log('database err!')
             }
 
+            
             Page.find({category: category._id})
                 .populate({
                     path: 'author',
