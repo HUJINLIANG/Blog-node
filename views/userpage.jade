@@ -30,10 +30,16 @@ block content
                         p #{page.des}
                     .hr-line-dashed
         .col-md-3
-            .person-information(style='border:1px solid #c5c5c5;border-radius:4px;margin-top:30px;padding:10px;background:#ffffff')
+            .person-information(style='position:fixed;top:140px;right:50px;bottom:0;width:300px;border:1px solid #c5c5c5;border-radius:4px;margin-top:30px;padding:10px;background:#ffffff')
                 .media
                     .media-left
                         a(href='#')
                             img.media-object(src='#{user.poster}',width='70',height='70')
                     .media-body
                         h4.media-heading= user.name
+                hr
+                img(src='/images/time.svg',width='30')
+                | 入驻时间 #{moment(user.meta.createAt).format('MM/DD/YYYY')}
+                hr
+                img(src='/images/login.svg',width='30')
+                | 最近登录 #{moment(user.meta.lastOnline).format('HH:mm/MM/DD/YYYY')}

@@ -9,27 +9,6 @@ var Page = require('../models/Page');
 
 exports.index = function(req, res, next) {
 
-    // Page.find({})
-    //     .populate({
-    //         path:'author',
-    //         select:'name poster'
-    //     })
-    //     .populate({
-    //         path: 'category',
-    //         select:'name'
-    //     })
-    //     .exec(function(err,pages){
-    //
-    //         res.render('index', {
-    //             active: 'index',
-    //             pages:pages,
-    //             categoryActive:'all'
-    //         });
-    //
-    //
-    //     });
-
-
     var page = parseInt(req.query.page) || 0;
     var count = 5;
     var index = page*count;

@@ -12,7 +12,17 @@ var UserSchema = new mongoose.Schema({
    },
     password:String,
     poster:String,
-    pages:[{type:ObjectId,ref:'Page'}]
+    pages:[{type:ObjectId,ref:'Page'}],
+    meta:{
+        createAt:{
+            type:Date,
+            default:Date.now()
+        },
+        lastOnline:{
+            type:Date,
+            default:Date.now()
+        }
+    }
     
 });
 

@@ -35,7 +35,7 @@ exports.saveProf = function(req, res, next) {
                 req.poster =  '/upload/'+poster;
                 next()
             });
-            
+
         })
     }
     else {
@@ -88,32 +88,36 @@ exports.signin = function(req,res){
         }
 
         if(!user){
+            
             return res.redirect('/');
         }
 
-        req.session.user = user;
-        res.redirect('/blog');
+        user.meta.lastOnline = Date.now();
+
+        user.save(function(err){
+            req.session.user = user;
+            res.redirect('/blog');
+
+        })
+
 
     })
 };
 
 exports.logout = function(req,res){
 
- 
-
     delete req.session.user;
-
-
     res.redirect('/');
+
 };
 
 exports.show = function(req,res){
-    
+
     var userId = req.params.id;
     console.log(userId);
-    
+
     User.findOne({_id:userId},function(err,user){
-        
+
         Page.find({author:userId})
             .populate({
                 path:'author',
@@ -126,20 +130,20 @@ exports.show = function(req,res){
             .exec(function(err,pages){
 
 
-            console.log(user);
-            console.log('------------');
-            console.log(pages)
-            
-            res.render('userpage',{
-                user:user,
-                pages:pages
+                console.log(user);
+                console.log('------------');
+                console.log(pages)
+
+                res.render('userpage',{
+                    user:user,
+                    pages:pages
+                })
+
             })
-            
-        })
-        
+
     })
-        
-    
-    
-    
+
+
+
+
 }
