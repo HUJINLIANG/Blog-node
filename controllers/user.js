@@ -5,6 +5,7 @@ var express = require('express');
 
 
 var User = require('../models/user');
+var Page = require('../models/page');
 var fs = require('fs');
 var path = require('path');
 
@@ -105,3 +106,40 @@ exports.logout = function(req,res){
 
     res.redirect('/');
 };
+
+exports.show = function(req,res){
+    
+    var userId = req.params.id;
+    console.log(userId);
+    
+    User.findOne({_id:userId},function(err,user){
+        
+        Page.find({author:userId})
+            .populate({
+                path:'author',
+                select:'name poster'
+            })
+            .populate({
+                path: 'category',
+                select:'name'
+            })
+            .exec(function(err,pages){
+
+
+            console.log(user);
+            console.log('------------');
+            console.log(pages)
+            
+            res.render('userpage',{
+                user:user,
+                pages:pages
+            })
+            
+        })
+        
+    })
+        
+    
+    
+    
+}

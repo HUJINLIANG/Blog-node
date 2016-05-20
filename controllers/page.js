@@ -4,20 +4,36 @@
 var Page = require('../models/page');
 var Category = require('../models/category');
 var Comment = require('../models/comment');
+var User = require('../models/user');
 
 //new page
 exports.new = function(req,res,next){
     var page = req.body;
+
+    var des = page.content.length>20?page.content.slice(0,20):page.content.slice();
+    page.des = des;
     var _page = new Page(page);
 
     var categoryId = page.category;
+    var author = page.author;
     _page.save(function(err,page){
         Category.findOne({_id:categoryId},function(err,category){
             category.pages.push(page._id);
 
             category.save(function(err,category){
 
-                res.redirect('/page/'+page._id)
+                User.findOne({_id:author},function(err,user){
+
+                    user.pages.push(page._id);
+
+                    user.save(function(err,user){
+                        res.redirect('/page/'+page._id)
+                    })
+
+
+                });
+
+
             })
         })
     })
@@ -36,7 +52,7 @@ exports.write = function(req,res,next){
             categories:categories
         })
     });
-    
+
 };
 
 //detail page

@@ -1,126 +1,144 @@
 extends layout/mainLayout
 //(style="background:red;")
 block content
-  .container-fluid
-    .row
-      .col-md-2.category-block
-        .category-top 文章分类
-        .category-split
-        .category-list
-          ul.nav.nav-pills.nav-stacked
-            li.active
-              a(href="#")
-                img(src="/images/all.svg")
-                | &nbsp;&nbsp;全部
-            li
-              a(href="#")
-                img(src="/images/html.svg")
-                | &nbsp;&nbsp;HTML
-            li
-              a(href="#")
-                img(src="/images/social-css3.svg")
-                | &nbsp;&nbsp;CSS
-            li
-              a(href="#")
-                img(src="/images/social-javascript.svg")
-                | &nbsp;&nbsp;JAVASCRIPT
-            li
-              a(href="#")
-                img(src="/images/jquery.svg")
-                | &nbsp;&nbsp;JQUERY
-            li
-              a(href="#")
-                img(src="/images/social-nodejs.svg")
-                | &nbsp;&nbsp;NODEJS
-            li
-              a(href="#")
-                img(src="/images/social-angular.svg")
-                | &nbsp;&nbsp;ANGULARJS
-            li
-              a(href="#")
-                img(src="/images/ex.svg")
-                | &nbsp;&nbsp;其他
-      .col-md-8.col-md-offset-2.blog-list
-        .row.list-container
-          .col-md-12.list-background
-            .row.top-bar
-              .col-md-7.list-top-left
-                a.current(title="按日期排序" href="#") 日期
-                a(title="按类型排序" href="#") 类型
-              .col-md-5.list-top-right
-                .form-search
-                  .input-group
-                    input#keyword.form-control.search-query(type="text()",placeholder="请输入关键字")
-                    div.input-group-btn
-                      button.btn.btn-info
-                        i.icon-hammer
-                        span &nbsp;&nbsp;搜索
-            ul.list-unstyled
-              li.page1
-                div.blog-item
-                  h4.title
-                    a(href="#")
-                      | AngularJS学习笔记
-                  sapn.category
-                    a(href="#")
-                      img(src="/images/category.svg")
-                      | &nbsp;&nbsp;AngularJS
-                  span.time
-                    img(src="/images/clock.svg")
-                    | &nbsp;&nbsp;2016-03
-                  div.clearfix
-                  p 模型和视图之间是同步的，数据模型控制器
-                .hr-line-dashed
-                div.blog-item
-                  h4.title
-                    a(href="#")
-                      | AngularJS学习笔记
-                  sapn.category
-                    a(href="#")
-                      img(src="/images/category.svg")
-                      | &nbsp;&nbsp;AngularJS
-                  span.time
-                    img(src="/images/clock.svg")
-                    | &nbsp;&nbsp;2016-03
-                  div.clearfix
-                  p 模型和视图之间是同步的，数据模型控制器
-                .hr-line-dashed
-                div.blog-item
-                  h4.title
-                    a(href="#")
-                      | AngularJS学习笔记
-                  sapn.category
-                    a(href="#")
-                      img(src="/images/category.svg")
-                      | &nbsp;&nbsp;AngularJS
-                  span.time
-                    img(src="/images/clock.svg")
-                    | &nbsp;&nbsp;2016-03
-                  div.clearfix
-                  p 模型和视图之间是同步的，数据模型控制器
-                .hr-line-dashed
-                div.blog-item
-                  h4.title
-                    a(href="#")
-                      | AngularJS学习笔记
-                  sapn.category
-                    a(href="#")
-                      img(src="/images/category.svg")
-                      | &nbsp;&nbsp;AngularJS
-                  span.time
-                    img(src="/images/clock.svg")
-                    | &nbsp;&nbsp;2016-03
-                  div.clearfix
-                  p 模型和视图之间是同步的，数据模型控制器
-                .hr-line-dashed
-            nav
-              ul.pager
-                li.previous
-                  a(href="#")
-                    span 上一页
-                li.next
-                  a(href="#")
-                    span 下一页
+    .container-fluid
+        .row
+            .col-md-2.category-block
+                .category-top 文章分类
+                .category-split
+                .category-list
+                    ul.nav.nav-pills.nav-stacked
+                        if categoryActive == 'all'
+                            li.active
+                                a(href="/")
+                                    img(src="/images/all.svg")
+                                    | &nbsp;&nbsp;全部
+                        else
+                            li
+                                a(href="/")
+                                    img(src="/images/all.svg")
+                                    | &nbsp;&nbsp;全部
+                        if categoryActive == 'html'
+                            li.active
+                                a(href="/show/html/0")
+                                    img(src="/images/html.svg")
+                                    | &nbsp;&nbsp;Html
+                        else
+                            li
+                                a(href="/show/html/0")
+                                    img(src="/images/html.svg")
+                                    | &nbsp;&nbsp;Html
+                        if categoryActive == 'css'
+                            li.active
+                                a(href="/show/css/0")
+                                    img(src="/images/social-css3.svg")
+                                    | &nbsp;&nbsp;Css
+                        else
+                            li
+                                a(href="/show/css/0")
+                                    img(src="/images/social-css3.svg")
+                                    | &nbsp;&nbsp;Css
+                        if categoryActive == 'javascript'
+                            li.active
+                                a(href="/show/javascript/0")
+                                    img(src="/images/social-javascript.svg")
+                                    | &nbsp;&nbsp;Javascript
+                        else
+                            li
+                                a(href="/show/javascript/0")
+                                    img(src="/images/social-javascript.svg")
+                                    | &nbsp;&nbsp;Javascript
+                        if categoryActive == 'jquery'
+                            li.active
+                                a(href="/show/jquery/0")
+                                    img(src="/images/jquery.svg")
+                                    | &nbsp;&nbsp;Jquery
+                        else
+                            li
+                                a(href="/show/jquery/0")
+                                    img(src="/images/jquery.svg")
+                                    | &nbsp;&nbsp;Jquery
+                        if categoryActive == 'nodejs'
+                            li.active
+                                a(href="/show/nodejs/0")
+                                    img(src="/images/social-nodejs.svg")
+                                    | &nbsp;&nbsp;Nodejs
+                        else
+                            li
+                                a(href="/show/nodejs/0")
+                                    img(src="/images/social-nodejs.svg")
+                                    | &nbsp;&nbsp;Nodejs
+                        if categoryActive == 'angularjs'
+                            li.active
+                                a(href="/show/angularjs/0")
+                                    img(src="/images/social-angular.svg")
+                                    | &nbsp;&nbsp;Angularjs
+                        else
+                            li
+                                a(href="/show/angularjs/0")
+                                    img(src="/images/social-angular.svg")
+                                    | &nbsp;&nbsp;Angularjs
+                        if categoryActive == 'other'
+                            li.active
+                                a(href="/show/other/0")
+                                    img(src="/images/ex.svg")
+                                    | &nbsp;&nbsp;其他
+                        else
+                            li
+                                a(href="/show/other/0")
+                                    img(src="/images/ex.svg")
+                                    | &nbsp;&nbsp;其他
+
+            .col-md-8.col-md-offset-2.blog-list
+                .row.list-container
+                    .col-md-12.list-background
+                        .row.top-bar
+                            .col-md-7.list-top-left
+                                a.current(title="按日期排序" href="#") 日期
+                                a(title="按类型排序" href="#") 类型
+                            .col-md-5.list-top-right
+                                .form-search
+                                    .input-group
+                                        input#keyword.form-control.search-query(type="text()",placeholder="请输入关键字")
+                                        div.input-group-btn
+                                            button.btn.btn-info
+                                                i.icon-hammer
+                                                span &nbsp;&nbsp;搜索
+                        ul.list-unstyled
+                            li.page1
+                                if pages.length>0
+                                    each page in pages
+                                        div.blog-item
+                                            h4.title
+                                                a(href="/page/#{page._id}")
+                                                    | #{page.title}
+                                            sapn.category
+                                                a(href="#")
+                                                    img(src="/images/category.svg")
+                                                    | &nbsp;&nbsp;#{page.category.name}
+                                            span.time
+                                                img(src="/images/clock.svg")
+                                                | &nbsp;&nbsp;#{moment(page.meta.createAt).format('MM/DD/YYYY')}
+                                            span.author
+                                                a(href="/user/#{page.author._id}")
+                                                    img(src="/images/user.svg")
+                                                    | &nbsp;&nbsp;#{page.author.name}
+                                            div.clearfix
+                                            p #{page.des}
+                                        .hr-line-dashed
+                                .hr-line-dashed
+                        nav
+                            ul.pagination
+                                - for (var i = 0; i < totalPage; i++) {
+                                - if (currentPage == (i + 1)) {
+                                li.active
+                                    span #{currentPage}
+                                - }
+                                - else {
+                                li
+                                    a(href='/show/#{categoryActive}/#{i}') #{i + 1}
+                                - }
+                                - }
 
 
 

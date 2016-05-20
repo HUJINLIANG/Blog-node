@@ -84,7 +84,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var categorys = ['HTML','CSS','JAVASCRIPT','JQUERY','NODEJS','ANGULARJS','其他'];
+var categorys = ['html','css','javascript','jquery','nodejs','angularjs','other'];
 
 function addCategorys(){
   addCate(categorys[0]);

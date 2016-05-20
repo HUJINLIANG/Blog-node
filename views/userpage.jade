@@ -1,0 +1,39 @@
+//
+   Created by lenovo on 2016/5/20.
+extends layout/mainLayout
+
+block content
+    .container
+        .page-header
+            h1 #{user.name}的个人主页
+        .col-md-9
+            .userpages-container(style='background:white;border:1px solid #cccccc;border-radius:5px;padding20px')
+                h2(style='text-align:center') 他的文章
+                hr
+                each page in pages
+                    div.blog-item
+                        h4.title
+                            a(href="/page/#{page._id}")
+                                | #{page.title}
+                        sapn.category
+                            a(href="#")
+                                img(src="/images/category.svg")
+                                | &nbsp;&nbsp;#{page.category.name}
+                        span.time
+                            img(src="/images/clock.svg")
+                            | &nbsp;&nbsp;#{moment(page.meta.createAt).format('MM/DD/YYYY')}
+                        span.author
+                            a(href="/user/#{page.author._id}")
+                                img(src="/images/user.svg")
+                                | &nbsp;&nbsp;#{page.author.name}
+                        div.clearfix
+                        p #{page.des}
+                    .hr-line-dashed
+        .col-md-3
+            .person-information(style='border:1px solid #c5c5c5;border-radius:4px;margin-top:30px;padding:10px;background:#ffffff')
+                .media
+                    .media-left
+                        a(href='#')
+                            img.media-object(src='#{user.poster}',width='70',height='70')
+                    .media-body
+                        h4.media-heading= user.name

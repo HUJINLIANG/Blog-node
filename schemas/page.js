@@ -8,6 +8,7 @@ var ObjectId = Schema.Types.ObjectId;
 var PageSchema = new mongoose.Schema({
     title:String,
     content:String,
+    des:String,
     author:{
         type:ObjectId,
         ref:'User'

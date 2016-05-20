@@ -20,7 +20,7 @@ block content
                                 li.media
                                     .pull-left
                                         a.comment(href="#comments", data-cid="#{item._id}", data-tid="#{item.from._id}")
-                                            img.media-object(src="#{item.from.poster}",style="width: 64px; height: 64px;")
+                                            img.media-object(src="#{item.from.poster}",style="width: 32px; height: 32px;")
                                     .media-body
                                         h4.media-heading #{item.from.name}
                                         p #{item.content}
@@ -29,7 +29,7 @@ block content
                                                 .media
                                                     .pull-left
                                                         a.comment(href="#comments", data-cid="#{item._id}", data-tid="#{reply.from._id}")
-                                                            img.media-object(src="#{reply.from.poster}", style="width: 64px; height: 64px;")
+                                                            img.media-object(src="#{reply.from.poster}", style="width: 32px; height: 32px;")
                                                     .media-body
                                                         h4.media-heading
                                                             | #{reply.from.name}
