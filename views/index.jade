@@ -98,12 +98,13 @@ block content
                                 a(title="按类型排序" href="#") 类型
                             .col-md-5.list-top-right
                                 .form-search
-                                    .input-group
-                                        input#keyword.form-control.search-query(type="text()",placeholder="请输入关键字")
-                                        div.input-group-btn
-                                            button.btn.btn-info
-                                                i.icon-hammer
-                                                span &nbsp;&nbsp;搜索
+                                    form(method='GET',action='/results')
+                                        .input-group
+                                            input#keyword.form-control.search-query(name='q',type="text",placeholder="请输入关键字")
+                                            div.input-group-btn
+                                                button.btn.btn-info(type='submit')
+                                                    i.icon-hammer
+                                                    span &nbsp;&nbsp;搜索
                         ul.list-unstyled
                             li.page1
                                 if pages.length>0
@@ -118,7 +119,7 @@ block content
                                                     | &nbsp;&nbsp;#{page.category.name}
                                             span.time
                                                 img(src="/images/clock.svg")
-                                                | &nbsp;&nbsp;#{moment(page.meta.createAt).format('MM/DD/YYYY')}
+                                                | &nbsp;&nbsp;#{moment(page.meta.create).format('MM/DD/YYYY')}
                                             span.author
                                                 a(href="/user/#{page.author._id}")
                                                     img(src="/images/user.svg")

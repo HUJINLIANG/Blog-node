@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var Category = mongoose.model('Category');
 var Comment = require('../models/comment');
 var Page = require('../models/Page');
+var eventproxy = require('eventproxy');
 
 exports.index = function(req, res, next) {
 
@@ -59,7 +60,7 @@ exports.show = function(req,res) {
                 console.log('database err!')
             }
 
-            
+
             Page.find({category: category._id})
                 .populate({
                     path: 'author',
@@ -113,5 +114,90 @@ exports.show = function(req,res) {
 
             });
     }
+
+};
+
+
+exports.search = function(req,res){
+
+    var q = req.query.q;
+
+    res.render('searchResults',{
+
+        q:q
+
+
+
+    })
+
+};
+
+exports.results = function(req,res){
+
+    var q = req.body.q;
+    var mode = req.body.searchMode;
+    var ep = new eventproxy();
+    var results = {
+        data:[]
+    };
+
+    ep.all('pageMode','authorMode',function(data1,data2){
+
+        var data = data1.concat(data2);
+        results.data = data;
+        console.log(results);
+        res.json(results);
+
+    });
+
+    if(mode.indexOf('page')!==-1){
+
+        Page.find({title:new RegExp(q+'.*','i')})
+            .populate({
+                path:'author',
+                select:'name poster'
+            })
+            .populate({
+                path: 'category',
+                select:'name'
+            })
+            .exec(function(err,pages){
+
+                ep.emit('pageMode',pages);
+            })
+
+    }else{
+        ep.emit('pageMode',[]);
+    }
+
+    if(mode.indexOf('author')!==-1){
+
+        Page.find({authorName:new RegExp(q+'.*','i')})
+            .populate({
+                path:'author',
+                select:'name poster'
+            })
+            .populate({
+                path: 'category',
+                select:'name'
+            })
+            .exec(function(err,pages){
+
+                ep.emit('authorMode',pages);
+
+            })
+
+    }else{
+        ep.emit('authorMode',[]);
+    }
+
+
+
+
+
+    
+
+
+
 
 };

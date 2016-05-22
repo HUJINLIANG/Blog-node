@@ -5,7 +5,7 @@ extends layout/mainLayout
 block content
     .container
         .page-header
-            h1 #{user.name}的个人主页
+            h1 #{author.name}的个人主页
         .col-md-9
             .userpages-container(style='background:white;border:1px solid #cccccc;border-radius:5px;padding20px')
                 h2(style='text-align:center') 他的文章
@@ -34,12 +34,12 @@ block content
                 .media
                     .media-left
                         a(href='#')
-                            img.media-object(src='#{user.poster}',width='70',height='70')
+                            img.media-object(src='#{author.poster}',width='70',height='70')
                     .media-body
-                        h4.media-heading= user.name
+                        h4.media-heading= author.name
                 hr
                 img(src='/images/time.svg',width='30')
-                | 入驻时间 #{moment(user.meta.createAt).format('MM/DD/YYYY')}
+                | 入驻时间 #{moment(author.meta.createAt).format('MM/DD/YYYY')}
                 hr
                 img(src='/images/login.svg',width='30')
-                | 最近登录 #{moment(user.meta.lastOnline).format('HH:mm/MM/DD/YYYY')}
+                | 最近登录 #{moment(author.meta.lastOnline).format('HH:mm/MM/DD/YYYY')}

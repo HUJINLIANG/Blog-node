@@ -14,6 +14,8 @@ module.exports = function(router){
     /* GET home page. */
     router.get('/', Index.index);
     router.get('/show/:category/:page',Index.show);
+    router.get('/results',Index.search);
+    router.post('/results',Index.results);
     
     
 

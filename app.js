@@ -9,8 +9,8 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var mongoStore = require('connect-mongo')(session);
 var Category = require('./models/category');
-var dbUrl = "mongodb://hjml69351:hjml69293@ds041394.mlab.com:41394/user";
-// var dbUrl = "mongodb://localhost/ap1";
+// var dbUrl = "mongodb://hjml69351:hjml69293@ds041394.mlab.com:41394/user";
+var dbUrl = "mongodb://localhost/ap1";
 
 mongoose.connect(dbUrl)
 

@@ -135,7 +135,7 @@ exports.show = function(req,res){
                 console.log(pages)
 
                 res.render('userpage',{
-                    user:user,
+                    author:user,
                     pages:pages
                 })
 

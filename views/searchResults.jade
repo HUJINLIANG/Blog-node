@@ -1,0 +1,86 @@
+//
+   Created by lenovo on 2016/5/21.
+extends layout/mainLayout
+
+block content
+    .container(style='background-color:white')
+        .page-header
+            h1 文章检索
+        .row
+            .col-md-6
+                form#searchForm(action='/results',method='POST')
+                    .input-group
+                        input.form-control(type='text',name='q',placeholder='请输入检索词')
+                        .input-group-btn
+                            button.btn.btn-info(type='submit')
+                                i.icon-hammer
+                                    span &nbsp;&nbsp;搜索
+                    hr
+                    span 检索类型&nbsp;&nbsp;&nbsp;
+                    label.checkbox-inline
+                        input(type='checkbox',name='searchMode',value='page',checked)
+                        | 文章标题
+                    label.checkbox-inline
+                        input(type='checkbox',name='searchMode',value='author')
+                        | 文章作者
+        br
+        h3 检索结果
+        .row
+            .col-md-9#search-container
+                div.blog-item
+                    h4.title
+                        a(href="")
+                            | aaaa
+                    sapn.category
+                        a(href="#")
+                            img(src="/images/category.svg")
+                            | &nbsp;&nbsp;aaaaa
+                    span.time
+                        img(src="/images/clock.svg")
+                        | &nbsp;&nbsp;aaaaaaa
+                    span.author
+                        a(href="")
+                            img(src="/images/user.svg")
+                            | &nbsp;&nbsp;aaaaa
+                    div.clearfix
+                    p aaaaaaa
+                .hr-line-dashed
+                div.blog-item
+                    h4.title
+                        a(href="")
+                            | aaaa
+                    sapn.category
+                        a(href="#")
+                            img(src="/images/category.svg")
+                            | &nbsp;&nbsp;aaaaa
+                    span.time
+                        img(src="/images/clock.svg")
+                        | &nbsp;&nbsp;aaaaaaa
+                    span.author
+                        a(href="")
+                            img(src="/images/user.svg")
+                            | &nbsp;&nbsp;aaaaa
+                    div.clearfix
+                    p aaaaaaa
+                .hr-line-dashed
+                div.blog-item
+                    h4.title
+                        a(href="")
+                            | aaaa
+                    sapn.category
+                        a(href="#")
+                            img(src="/images/category.svg")
+                            | &nbsp;&nbsp;aaaaa
+                    span.time
+                        img(src="/images/clock.svg")
+                        | &nbsp;&nbsp;aaaaaaa
+                    span.author
+                        a(href="")
+                            img(src="/images/user.svg")
+                            | &nbsp;&nbsp;aaaaa
+                    div.clearfix
+                    p aaaaaaa
+                .hr-line-dashed
+    script(src='/js/search.js')
+
+

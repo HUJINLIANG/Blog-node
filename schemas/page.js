@@ -9,6 +9,7 @@ var PageSchema = new mongoose.Schema({
     title:String,
     content:String,
     des:String,
+    authorName:String,
     author:{
         type:ObjectId,
         ref:'User'

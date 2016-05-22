@@ -16,6 +16,7 @@ exports.new = function(req,res,next){
 
     var categoryId = page.category;
     var author = page.author;
+    _page.authorName = req.session.user.name;
     _page.save(function(err,page){
         Category.findOne({_id:categoryId},function(err,category){
             category.pages.push(page._id);
